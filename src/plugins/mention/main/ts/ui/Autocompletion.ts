@@ -55,7 +55,6 @@ const init = (editor: Editor): void => {
                 icon: `<img src="${item.flag}" width="28" height="14" style="width:28px; height:14px;">`,
               });
             }
-
             resolve(result);
           }
         });
