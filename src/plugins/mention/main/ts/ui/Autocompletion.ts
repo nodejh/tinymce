@@ -1,12 +1,13 @@
 /**
  * mention plugin
- * @author zhuanggong.jh
+ * @author nodejh
  */
 
 import Editor from 'tinymce/core/api/Editor';
 import Promise from 'tinymce/core/api/util/Promise';
 import XHR from 'tinymce/core/api/util/XHR';
 import JSON from 'tinymce/core/api/util/JSON';
+import { console } from '@ephox/dom-globals';
 
 import Actions from '../core/Actions';
 import Settings from '../api/Settings';
@@ -14,9 +15,13 @@ import Settings from '../api/Settings';
 const init = (editor: Editor): void => {
   const config = {
     ch: Settings.getMentionCh(editor),
-    minChars: Settings.getMentionMinChars(editor),
+    minChars: 1 || Settings.getMentionMinChars(editor),
     columns: 1,
     fetch: Settings.getMentionFetch(editor),
+    matches: (rng, text, pattern) => {
+      console.log('rng, text, pattern', rng, text, pattern);
+      return text.indexOf(Settings.getMentionCh(editor)) === 0;
+    },
     onAction: (autocompleteApi, rng, value) => {
       const format = Settings.getMentionFormat(editor);
       const callback = Settings.getMentionCallback(editor);

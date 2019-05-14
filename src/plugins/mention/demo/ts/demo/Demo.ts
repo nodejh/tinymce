@@ -6,9 +6,8 @@ tinymce.init({
   selector: 'textarea.tinymce',
   plugins: 'mention',
   height: 600,
-
+  // toolbar: false,
   mention_ch: '@',
-  mention_callback: (v) => console.log('xxx ', v)
 });
 
 export {};
