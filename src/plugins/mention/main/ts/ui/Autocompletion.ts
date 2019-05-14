@@ -19,7 +19,7 @@ const init = (editor: Editor): void => {
     fetch: Settings.getMentionFetch(editor),
     onAction: (autocompleteApi, rng, value) => {
       const format = Settings.getMentionFormat(editor);
-      const callback = Settings.getMentionFormat(editor);
+      const callback = Settings.getMentionCallback(editor);
 
       editor.selection.setRng(rng);
 
@@ -29,7 +29,7 @@ const init = (editor: Editor): void => {
         Actions.insertMention(editor, value);
       }
 
-      if (typeof format === 'function') {
+      if (typeof callback === 'function') {
         callback(value);
       }
 
