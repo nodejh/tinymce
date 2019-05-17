@@ -16,7 +16,7 @@ import * as Autocompletion from './ui/Autocompletion';
  * @private
  */
 
-PluginManager.add('mention', function (editor, pluginUrl) {
+PluginManager.add('mention', function (editor) {
   Autocompletion.init(editor);
 });
 
